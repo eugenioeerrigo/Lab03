@@ -50,7 +50,7 @@ public class SpellCheckerController {
 
     @FXML
     void handleCheck(ActionEvent event) {
-    	String[] arr = txtIn.getText().split(" ");
+    	String[] arr = txtIn.getText().replaceAll("[.,\\/#!$%\\^&\\*;:{}=\\-_`~()\\[\\]]\\\"", "").toLowerCase().split(" ");
        	model.loadDictionary(chsBox.getValue());
        	List<RichWord> wrong = model.spellCheckTest(Arrays.asList(arr));
        	for(RichWord rw : wrong)
